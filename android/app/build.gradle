@@ -23,6 +23,8 @@ if (flutterVersionName == null) {
 }
 
 android {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
     namespace "com.example.health_care"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
@@ -45,10 +47,11 @@ android {
         applicationId "com.example.health_care"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        manifestPlaceholders += [NATIVE_APP_KEY: localProperties['KAKAO_NATIVE_APP_KEY']]
     }
 
     buildTypes {

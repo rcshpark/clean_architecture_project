@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:health_care/src/data/repository/auth_repository_impl.dart';
-import 'package:health_care/src/domain/repository/auth_repository.dart';
+import 'package:get_it/get_it.dart';
 import 'package:health_care/src/domain/usecase/auth_usecase.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -11,6 +10,18 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  final AuthUseCase _authUseCase = GetIt.I<AuthUseCase>();
+
+  Future<void> _loginWithKakao() async {
+    final user = await _authUseCase.call();
+    user.when(success: (data) {
+      print(data);
+    }, error: (e, message) {
+      print("e : $e");
+      print("message : $message");
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +30,7 @@ class _AuthScreenState extends State<AuthScreen> {
         children: [
           ElevatedButton(
               onPressed: () async {
-                // AuthUseCase().call();
+                _loginWithKakao();
               },
               child: const Text("kakao login"))
         ],

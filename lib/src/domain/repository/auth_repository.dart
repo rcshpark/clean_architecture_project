@@ -1,6 +1,7 @@
+import 'package:health_care/src/domain/model/data_state_model.dart';
 import 'package:health_care/src/domain/model/user_model.dart';
 
 abstract class AuthRepository {
-  Future<UserModel> loginWithKakao();
-  Future<UserModel> loginWithApple();
+  Future<DataState<UserModel>> loginWithKakao();
+  Future<DataState<UserModel>> loginWithApple();
 }

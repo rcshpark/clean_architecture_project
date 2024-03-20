@@ -23,7 +23,7 @@ mixin _$UserModel {
   int get pk => throw _privateConstructorUsedError;
   String get profile => throw _privateConstructorUsedError;
   int get age => throw _privateConstructorUsedError;
-  String get option => throw _privateConstructorUsedError;
+  bool get option => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -36,7 +36,7 @@ abstract class $UserModelCopyWith<$Res> {
   factory $UserModelCopyWith(UserModel value, $Res Function(UserModel) then) =
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
-  $Res call({int pk, String profile, int age, String option});
+  $Res call({int pk, String profile, int age, bool option});
 }
 
 /// @nodoc
@@ -73,7 +73,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
       option: null == option
           ? _value.option
           : option // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
     ) as $Val);
   }
 }
@@ -86,7 +86,7 @@ abstract class _$$UserModelImplCopyWith<$Res>
       __$$UserModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int pk, String profile, int age, String option});
+  $Res call({int pk, String profile, int age, bool option});
 }
 
 /// @nodoc
@@ -121,7 +121,7 @@ class __$$UserModelImplCopyWithImpl<$Res>
       option: null == option
           ? _value.option
           : option // ignore: cast_nullable_to_non_nullable
-              as String,
+              as bool,
     ));
   }
 }
@@ -145,7 +145,7 @@ class _$UserModelImpl implements _UserModel {
   @override
   final int age;
   @override
-  final String option;
+  final bool option;
 
   @override
   String toString() {
@@ -186,7 +186,7 @@ abstract class _UserModel implements UserModel {
       {required final int pk,
       required final String profile,
       required final int age,
-      required final String option}) = _$UserModelImpl;
+      required final bool option}) = _$UserModelImpl;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$UserModelImpl.fromJson;
@@ -198,7 +198,7 @@ abstract class _UserModel implements UserModel {
   @override
   int get age;
   @override
-  String get option;
+  bool get option;
   @override
   @JsonKey(ignore: true)
   _$$UserModelImplCopyWith<_$UserModelImpl> get copyWith =>

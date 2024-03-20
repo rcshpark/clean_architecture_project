@@ -8,7 +8,7 @@ class UserModel with _$UserModel {
     required int pk,
     required String profile,
     required int age,
-    required String option,
+    required bool option,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

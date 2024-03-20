@@ -11,7 +11,7 @@ _$UserModelImpl _$$UserModelImplFromJson(Map<String, dynamic> json) =>
       pk: json['pk'] as int,
       profile: json['profile'] as String,
       age: json['age'] as int,
-      option: json['option'] as String,
+      option: json['option'] as bool,
     );
 
 Map<String, dynamic> _$$UserModelImplToJson(_$UserModelImpl instance) =>

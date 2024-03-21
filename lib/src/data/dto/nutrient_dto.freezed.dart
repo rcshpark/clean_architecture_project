@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-NuterientDto _$NuterientDtoFromJson(Map<String, dynamic> json) {
-  return _NuterientDto.fromJson(json);
+NutrientDto _$NutrientDtoFromJson(Map<String, dynamic> json) {
+  return _NutrientDto.fromJson(json);
 }
 
 /// @nodoc
-mixin _$NuterientDto {
+mixin _$NutrientDto {
   String get name => throw _privateConstructorUsedError;
   int get kcal => throw _privateConstructorUsedError;
   int get carbohydrate => throw _privateConstructorUsedError;
@@ -28,23 +28,23 @@ mixin _$NuterientDto {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $NuterientDtoCopyWith<NuterientDto> get copyWith =>
+  $NutrientDtoCopyWith<NutrientDto> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NuterientDtoCopyWith<$Res> {
-  factory $NuterientDtoCopyWith(
-          NuterientDto value, $Res Function(NuterientDto) then) =
-      _$NuterientDtoCopyWithImpl<$Res, NuterientDto>;
+abstract class $NutrientDtoCopyWith<$Res> {
+  factory $NutrientDtoCopyWith(
+          NutrientDto value, $Res Function(NutrientDto) then) =
+      _$NutrientDtoCopyWithImpl<$Res, NutrientDto>;
   @useResult
   $Res call({String name, int kcal, int carbohydrate, int protein, int fat});
 }
 
 /// @nodoc
-class _$NuterientDtoCopyWithImpl<$Res, $Val extends NuterientDto>
-    implements $NuterientDtoCopyWith<$Res> {
-  _$NuterientDtoCopyWithImpl(this._value, this._then);
+class _$NutrientDtoCopyWithImpl<$Res, $Val extends NutrientDto>
+    implements $NutrientDtoCopyWith<$Res> {
+  _$NutrientDtoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -86,22 +86,22 @@ class _$NuterientDtoCopyWithImpl<$Res, $Val extends NuterientDto>
 }
 
 /// @nodoc
-abstract class _$$NuterientDtoImplCopyWith<$Res>
-    implements $NuterientDtoCopyWith<$Res> {
-  factory _$$NuterientDtoImplCopyWith(
-          _$NuterientDtoImpl value, $Res Function(_$NuterientDtoImpl) then) =
-      __$$NuterientDtoImplCopyWithImpl<$Res>;
+abstract class _$$NutrientDtoImplCopyWith<$Res>
+    implements $NutrientDtoCopyWith<$Res> {
+  factory _$$NutrientDtoImplCopyWith(
+          _$NutrientDtoImpl value, $Res Function(_$NutrientDtoImpl) then) =
+      __$$NutrientDtoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String name, int kcal, int carbohydrate, int protein, int fat});
 }
 
 /// @nodoc
-class __$$NuterientDtoImplCopyWithImpl<$Res>
-    extends _$NuterientDtoCopyWithImpl<$Res, _$NuterientDtoImpl>
-    implements _$$NuterientDtoImplCopyWith<$Res> {
-  __$$NuterientDtoImplCopyWithImpl(
-      _$NuterientDtoImpl _value, $Res Function(_$NuterientDtoImpl) _then)
+class __$$NutrientDtoImplCopyWithImpl<$Res>
+    extends _$NutrientDtoCopyWithImpl<$Res, _$NutrientDtoImpl>
+    implements _$$NutrientDtoImplCopyWith<$Res> {
+  __$$NutrientDtoImplCopyWithImpl(
+      _$NutrientDtoImpl _value, $Res Function(_$NutrientDtoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -113,7 +113,7 @@ class __$$NuterientDtoImplCopyWithImpl<$Res>
     Object? protein = null,
     Object? fat = null,
   }) {
-    return _then(_$NuterientDtoImpl(
+    return _then(_$NutrientDtoImpl(
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -140,16 +140,16 @@ class __$$NuterientDtoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$NuterientDtoImpl implements _NuterientDto {
-  _$NuterientDtoImpl(
+class _$NutrientDtoImpl implements _NutrientDto {
+  _$NutrientDtoImpl(
       {required this.name,
       required this.kcal,
       required this.carbohydrate,
       required this.protein,
       required this.fat});
 
-  factory _$NuterientDtoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$NuterientDtoImplFromJson(json);
+  factory _$NutrientDtoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$NutrientDtoImplFromJson(json);
 
   @override
   final String name;
@@ -164,14 +164,14 @@ class _$NuterientDtoImpl implements _NuterientDto {
 
   @override
   String toString() {
-    return 'NuterientDto(name: $name, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat)';
+    return 'NutrientDto(name: $name, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$NuterientDtoImpl &&
+            other is _$NutrientDtoImpl &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.kcal, kcal) || other.kcal == kcal) &&
             (identical(other.carbohydrate, carbohydrate) ||
@@ -188,27 +188,27 @@ class _$NuterientDtoImpl implements _NuterientDto {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$NuterientDtoImplCopyWith<_$NuterientDtoImpl> get copyWith =>
-      __$$NuterientDtoImplCopyWithImpl<_$NuterientDtoImpl>(this, _$identity);
+  _$$NutrientDtoImplCopyWith<_$NutrientDtoImpl> get copyWith =>
+      __$$NutrientDtoImplCopyWithImpl<_$NutrientDtoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$NuterientDtoImplToJson(
+    return _$$NutrientDtoImplToJson(
       this,
     );
   }
 }
 
-abstract class _NuterientDto implements NuterientDto {
-  factory _NuterientDto(
+abstract class _NutrientDto implements NutrientDto {
+  factory _NutrientDto(
       {required final String name,
       required final int kcal,
       required final int carbohydrate,
       required final int protein,
-      required final int fat}) = _$NuterientDtoImpl;
+      required final int fat}) = _$NutrientDtoImpl;
 
-  factory _NuterientDto.fromJson(Map<String, dynamic> json) =
-      _$NuterientDtoImpl.fromJson;
+  factory _NutrientDto.fromJson(Map<String, dynamic> json) =
+      _$NutrientDtoImpl.fromJson;
 
   @override
   String get name;
@@ -222,6 +222,6 @@ abstract class _NuterientDto implements NuterientDto {
   int get fat;
   @override
   @JsonKey(ignore: true)
-  _$$NuterientDtoImplCopyWith<_$NuterientDtoImpl> get copyWith =>
+  _$$NutrientDtoImplCopyWith<_$NutrientDtoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -3,15 +3,15 @@ part 'nutrient_dto.freezed.dart';
 part 'nutrient_dto.g.dart';
 
 @freezed
-class NuterientDto with _$NuterientDto {
-  factory NuterientDto({
+class NutrientDto with _$NutrientDto {
+  factory NutrientDto({
     required String name,
     required int kcal,
     required int carbohydrate,
     required int protein,
     required int fat,
-  }) = _NuterientDto;
+  }) = _NutrientDto;
 
-  factory NuterientDto.fromJson(Map<String, dynamic> json) =>
-      _$NuterientDtoFromJson(json);
+  factory NutrientDto.fromJson(Map<String, dynamic> json) =>
+      _$NutrientDtoFromJson(json);
 }

@@ -1,40 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-import 'package:health_care/src/domain/usecase/auth_usecase.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:health_care/src/core/enum.dart';
+import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_detail_view.dart';
+import 'package:health_care/src/presentation/view_model/auth/auth_view_model.dart';
 
-class AuthScreen extends StatefulWidget {
+class AuthScreen extends ConsumerWidget {
   const AuthScreen({super.key});
 
   @override
-  State<AuthScreen> createState() => _AuthScreenState();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authState = ref.watch(authViewModelProvider);
+    final authViewModel = ref.watch(authViewModelProvider.notifier);
+
+    return Scaffold(body: authBody(authState, authViewModel, context));
+  }
 }
 
-class _AuthScreenState extends State<AuthScreen> {
-  final AuthUseCase _authUseCase = GetIt.I<AuthUseCase>();
-
-  Future<void> _loginWithKakao() async {
-    final user = await _authUseCase.call();
-    user.when(success: (data) {
-      print(data);
-    }, error: (e, message) {
-      print("e : $e");
-      print("message : $message");
+Widget authBody(
+    AuthState authState, AuthViewModel authViewModel, BuildContext context) {
+  if (authState is AuthError) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Fluttertoast.showToast(msg: "login error : ${authState.message}");
     });
+  } else if (authState is AuthSuccess) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => const NutrientDetailScreen()));
+    });
+  } else if (authState is AuthLoading) {
+    return const Center(child: CircularProgressIndicator());
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-              onPressed: () async {
-                _loginWithKakao();
-              },
-              child: const Text("kakao login"))
-        ],
-      ),
-    );
-  }
+  return Center(
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        ElevatedButton(
+            onPressed: () => authViewModel.login(LoginType.kakao, context),
+            child: const Text("Kakao Login")),
+        ElevatedButton(
+            onPressed: () => authViewModel.login(LoginType.apple, context),
+            child: const Text("Apple Login")),
+      ],
+    ),
+  );
 }

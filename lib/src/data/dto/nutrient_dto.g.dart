@@ -6,20 +6,19 @@ part of 'nutrient_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NutrientDtoImpl _$$NutrientDtoImplFromJson(Map<String, dynamic> json) =>
-    _$NutrientDtoImpl(
-      name: json['name'] as String,
-      kcal: json['kcal'] as int,
-      carbohydrate: json['carbohydrate'] as int,
-      protein: json['protein'] as int,
-      fat: json['fat'] as int,
+NutrientDto _$NutrientDtoFromJson(Map<String, dynamic> json) => NutrientDto(
+      json['DESC_KOR'] as String,
+      json['NUTR_CONT1'] as String,
+      json['NUTR_CONT2'] as String,
+      json['NUTR_CONT3'] as String,
+      json['NUTR_CONT4'] as String,
     );
 
-Map<String, dynamic> _$$NutrientDtoImplToJson(_$NutrientDtoImpl instance) =>
+Map<String, dynamic> _$NutrientDtoToJson(NutrientDto instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'kcal': instance.kcal,
-      'carbohydrate': instance.carbohydrate,
-      'protein': instance.protein,
-      'fat': instance.fat,
+      'DESC_KOR': instance.name,
+      'NUTR_CONT1': instance.kcal,
+      'NUTR_CONT2': instance.carbohydrate,
+      'NUTR_CONT3': instance.protein,
+      'NUTR_CONT4': instance.fat,
     };

@@ -26,7 +26,7 @@ class AuthDataSource {
       }
     }
     User user = await UserApi.instance.me();
-    UserDto userDto = UserDto(
+    var userDto = UserDto(
         pk: user.id,
         profile: user.kakaoAccount!.profile!.nickname ?? "",
         age: 12,

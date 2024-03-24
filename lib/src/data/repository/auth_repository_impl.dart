@@ -1,4 +1,5 @@
 import 'package:health_care/src/data/data_sources/auth_data_source.dart';
+import 'package:health_care/src/data/translator/translator.dart';
 import 'package:health_care/src/domain/model/data_state_model.dart';
 import 'package:health_care/src/domain/model/user_model.dart';
 import 'package:health_care/src/domain/repository/auth_repository.dart';
@@ -8,14 +9,10 @@ class AuthRepositoryImpl implements AuthRepository {
   const AuthRepositoryImpl(this._authDataSource);
   @override
   Future<DataState<UserModel>> loginWithKakao() async {
-    // UserModel userModel = response as UserModel;
     try {
       final res = await _authDataSource.loginWithKakao();
-      // var res = await _authDataSource.loginWithKakao();
       print(res.toString());
-
-      var data = UserModel.fromJson(res.toJson());
-      return DataState.success(data);
+      return Translator().translateUser(res);
     } catch (e) {
       print(e);
       return DataState.error(Exception(), e.toString());

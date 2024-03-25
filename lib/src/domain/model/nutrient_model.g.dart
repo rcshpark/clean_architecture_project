@@ -6,21 +6,30 @@ part of 'nutrient_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$NuterientModelImpl _$$NuterientModelImplFromJson(Map<String, dynamic> json) =>
-    _$NuterientModelImpl(
+_$NutrientModelImpl _$$NutrientModelImplFromJson(Map<String, dynamic> json) =>
+    _$NutrientModelImpl(
       name: json['name'] as String,
-      kcal: json['kcal'] as int,
-      carbohydrate: json['carbohydrate'] as int,
-      protein: json['protein'] as int,
-      fat: json['fat'] as int,
+      kcal: (json['kcal'] as num).toDouble(),
+      carbohydrate: (json['carbohydrate'] as num).toDouble(),
+      protein: (json['protein'] as num).toDouble(),
+      fat: (json['fat'] as num).toDouble(),
+      sugars: (json['sugars'] as num).toDouble(),
+      na: (json['na'] as num).toDouble(),
+      col: (json['col'] as num).toDouble(),
+      saturatedFat: (json['saturatedFat'] as num).toDouble(),
+      transFat: (json['transFat'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$$NuterientModelImplToJson(
-        _$NuterientModelImpl instance) =>
+Map<String, dynamic> _$$NutrientModelImplToJson(_$NutrientModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
       'kcal': instance.kcal,
       'carbohydrate': instance.carbohydrate,
       'protein': instance.protein,
       'fat': instance.fat,
+      'sugars': instance.sugars,
+      'na': instance.na,
+      'col': instance.col,
+      'saturatedFat': instance.saturatedFat,
+      'transFat': instance.transFat,
     };

@@ -4,13 +4,13 @@ import 'package:health_care/src/domain/model/nutrient_model.dart';
 import 'package:health_care/src/domain/repository/nutrient_repository.dart';
 
 class NutrientUseCase
-    implements UseCase<DataState<List<NuterientModel>>, String> {
+    implements UseCase<DataState<List<NutrientModel>>, String> {
   final NutrientRepository _remoteRepository;
 
   NutrientUseCase(this._remoteRepository);
 
   @override
-  Future<DataState<List<NuterientModel>>> call(String query) {
+  Future<DataState<List<NutrientModel>>> call(String query) {
     return _remoteRepository.searchNutrient(query);
   }
 }

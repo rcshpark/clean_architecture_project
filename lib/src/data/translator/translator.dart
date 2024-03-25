@@ -15,7 +15,7 @@ class Translator {
 
   factory Translator() => _singleton;
 
-  Future<DataState<List<NuterientModel>>> translateNutrient(
+  Future<DataState<List<NutrientModel>>> translateNutrient(
     List<NutrientDto> nutrientInfo,
   ) {
     try {
@@ -23,12 +23,17 @@ class Translator {
         (List<NutrientDto> nutrientInfo) {
           var translated = nutrientInfo
               .map(
-                (nutrient) => NuterientModel(
+                (nutrient) => NutrientModel(
                   name: nutrient.name,
-                  kcal: double.parse(nutrient.kcal).toInt(),
-                  carbohydrate: double.parse(nutrient.carbohydrate).toInt(),
-                  protein: double.parse(nutrient.protein).toInt(),
-                  fat: double.parse(nutrient.fat).toInt(),
+                  kcal: double.parse(nutrient.kcal),
+                  carbohydrate: double.parse(nutrient.carbohydrate),
+                  protein: double.parse(nutrient.protein),
+                  fat: double.parse(nutrient.fat),
+                  sugars: double.parse(nutrient.sugars),
+                  na: double.parse(nutrient.na),
+                  col: double.parse(nutrient.col),
+                  saturatedFat: double.parse(nutrient.saturatedFat),
+                  transFat: double.parse(nutrient.transFat),
                 ),
               )
               .toList();

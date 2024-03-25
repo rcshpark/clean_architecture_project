@@ -9,7 +9,7 @@ class NutrientRepositoryImpl implements NutrientRepository {
   const NutrientRepositoryImpl(this._nutrientDataSource);
 
   @override
-  Future<DataState<List<NuterientModel>>> searchNutrient(String query) async {
+  Future<DataState<List<NutrientModel>>> searchNutrient(String query) async {
     try {
       final res = await _nutrientDataSource.searchNutrient(query);
       return Translator().translateNutrient(res);

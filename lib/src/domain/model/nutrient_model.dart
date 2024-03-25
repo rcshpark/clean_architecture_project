@@ -3,15 +3,20 @@ part 'nutrient_model.freezed.dart';
 part 'nutrient_model.g.dart';
 
 @freezed
-class NuterientModel with _$NuterientModel {
-  factory NuterientModel({
+class NutrientModel with _$NutrientModel {
+  factory NutrientModel({
     required String name,
-    required int kcal,
-    required int carbohydrate,
-    required int protein,
-    required int fat,
-  }) = _NuterientModel;
+    required double kcal,
+    required double carbohydrate,
+    required double protein,
+    required double fat,
+    required double sugars,
+    required double na,
+    required double col,
+    required double saturatedFat,
+    required double transFat,
+  }) = _NutrientModel;
 
-  factory NuterientModel.fromJson(Map<String, dynamic> json) =>
-      _$NuterientModelFromJson(json);
+  factory NutrientModel.fromJson(Map<String, dynamic> json) =>
+      _$NutrientModelFromJson(json);
 }

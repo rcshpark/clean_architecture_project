@@ -9,6 +9,7 @@ part of 'nutrient_model.dart';
 _$NutrientModelImpl _$$NutrientModelImplFromJson(Map<String, dynamic> json) =>
     _$NutrientModelImpl(
       name: json['name'] as String,
+      weight: (json['weight'] as num).toDouble(),
       kcal: (json['kcal'] as num).toDouble(),
       carbohydrate: (json['carbohydrate'] as num).toDouble(),
       protein: (json['protein'] as num).toDouble(),
@@ -23,6 +24,7 @@ _$NutrientModelImpl _$$NutrientModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$NutrientModelImplToJson(_$NutrientModelImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'weight': instance.weight,
       'kcal': instance.kcal,
       'carbohydrate': instance.carbohydrate,
       'protein': instance.protein,

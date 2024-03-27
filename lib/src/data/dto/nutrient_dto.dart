@@ -5,6 +5,8 @@ part 'nutrient_dto.g.dart';
 class NutrientDto {
   @JsonKey(name: 'DESC_KOR')
   String name;
+  @JsonKey(name: 'SERVING_WT')
+  String weight;
   @JsonKey(name: 'NUTR_CONT1')
   String kcal;
   @JsonKey(name: 'NUTR_CONT2')
@@ -23,8 +25,18 @@ class NutrientDto {
   String saturatedFat;
   @JsonKey(name: 'NUTR_CONT9')
   String transFat;
-  NutrientDto(this.name, this.kcal, this.carbohydrate, this.protein, this.fat,
-      this.sugars, this.na, this.col, this.saturatedFat, this.transFat);
+  NutrientDto(
+      this.name,
+      this.weight,
+      this.kcal,
+      this.carbohydrate,
+      this.protein,
+      this.fat,
+      this.sugars,
+      this.na,
+      this.col,
+      this.saturatedFat,
+      this.transFat);
 
   factory NutrientDto.fromJson(Map<String, dynamic> json) =>
       _$NutrientDtoFromJson(json);

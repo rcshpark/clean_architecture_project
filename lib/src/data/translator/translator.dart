@@ -25,15 +25,27 @@ class Translator {
               .map(
                 (nutrient) => NutrientModel(
                   name: nutrient.name,
-                  kcal: double.parse(nutrient.kcal),
-                  carbohydrate: double.parse(nutrient.carbohydrate),
-                  protein: double.parse(nutrient.protein),
-                  fat: double.parse(nutrient.fat),
-                  sugars: double.parse(nutrient.sugars),
-                  na: double.parse(nutrient.na),
-                  col: double.parse(nutrient.col),
-                  saturatedFat: double.parse(nutrient.saturatedFat),
-                  transFat: double.parse(nutrient.transFat),
+                  weight: double.parse(nutrient.weight),
+                  kcal:
+                      nutrient.kcal == "N/A" ? 0 : double.parse(nutrient.kcal),
+                  carbohydrate: nutrient.carbohydrate == "N/A"
+                      ? 0
+                      : double.parse(nutrient.carbohydrate),
+                  protein: nutrient.protein == "N/A"
+                      ? 0
+                      : double.parse(nutrient.protein),
+                  fat: nutrient.fat == "N/A" ? 0 : double.parse(nutrient.fat),
+                  sugars: nutrient.sugars == "N/A"
+                      ? 0
+                      : double.parse(nutrient.sugars),
+                  na: nutrient.na == "N/A" ? 0 : double.parse(nutrient.na),
+                  col: nutrient.col == "N/A" ? 0 : double.parse(nutrient.col),
+                  saturatedFat: nutrient.saturatedFat == "N/A"
+                      ? 0
+                      : double.parse(nutrient.saturatedFat),
+                  transFat: nutrient.transFat == "N/A"
+                      ? 0
+                      : double.parse(nutrient.transFat),
                 ),
               )
               .toList();

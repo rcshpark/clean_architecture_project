@@ -8,6 +8,7 @@ part of 'nutrient_dto.dart';
 
 NutrientDto _$NutrientDtoFromJson(Map<String, dynamic> json) => NutrientDto(
       json['DESC_KOR'] as String,
+      json['SERVING_WT'] as String,
       json['NUTR_CONT1'] as String,
       json['NUTR_CONT2'] as String,
       json['NUTR_CONT3'] as String,
@@ -22,6 +23,7 @@ NutrientDto _$NutrientDtoFromJson(Map<String, dynamic> json) => NutrientDto(
 Map<String, dynamic> _$NutrientDtoToJson(NutrientDto instance) =>
     <String, dynamic>{
       'DESC_KOR': instance.name,
+      'SERVING_WT': instance.weight,
       'NUTR_CONT1': instance.kcal,
       'NUTR_CONT2': instance.carbohydrate,
       'NUTR_CONT3': instance.protein,

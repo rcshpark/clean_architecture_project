@@ -6,6 +6,7 @@ part 'nutrient_model.g.dart';
 class NutrientModel with _$NutrientModel {
   factory NutrientModel({
     required String name,
+    required double weight,
     required double kcal,
     required double carbohydrate,
     required double protein,

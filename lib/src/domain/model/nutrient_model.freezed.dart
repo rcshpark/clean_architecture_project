@@ -21,6 +21,7 @@ NutrientModel _$NutrientModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$NutrientModel {
   String get name => throw _privateConstructorUsedError;
+  double get weight => throw _privateConstructorUsedError;
   double get kcal => throw _privateConstructorUsedError;
   double get carbohydrate => throw _privateConstructorUsedError;
   double get protein => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $NutrientModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String name,
+      double weight,
       double kcal,
       double carbohydrate,
       double protein,
@@ -70,6 +72,7 @@ class _$NutrientModelCopyWithImpl<$Res, $Val extends NutrientModel>
   @override
   $Res call({
     Object? name = null,
+    Object? weight = null,
     Object? kcal = null,
     Object? carbohydrate = null,
     Object? protein = null,
@@ -85,6 +88,10 @@ class _$NutrientModelCopyWithImpl<$Res, $Val extends NutrientModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double,
       kcal: null == kcal
           ? _value.kcal
           : kcal // ignore: cast_nullable_to_non_nullable
@@ -135,6 +142,7 @@ abstract class _$$NutrientModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {String name,
+      double weight,
       double kcal,
       double carbohydrate,
       double protein,
@@ -158,6 +166,7 @@ class __$$NutrientModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? name = null,
+    Object? weight = null,
     Object? kcal = null,
     Object? carbohydrate = null,
     Object? protein = null,
@@ -173,6 +182,10 @@ class __$$NutrientModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      weight: null == weight
+          ? _value.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double,
       kcal: null == kcal
           ? _value.kcal
           : kcal // ignore: cast_nullable_to_non_nullable
@@ -218,6 +231,7 @@ class __$$NutrientModelImplCopyWithImpl<$Res>
 class _$NutrientModelImpl implements _NutrientModel {
   _$NutrientModelImpl(
       {required this.name,
+      required this.weight,
       required this.kcal,
       required this.carbohydrate,
       required this.protein,
@@ -233,6 +247,8 @@ class _$NutrientModelImpl implements _NutrientModel {
 
   @override
   final String name;
+  @override
+  final double weight;
   @override
   final double kcal;
   @override
@@ -254,7 +270,7 @@ class _$NutrientModelImpl implements _NutrientModel {
 
   @override
   String toString() {
-    return 'NutrientModel(name: $name, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat, sugars: $sugars, na: $na, col: $col, saturatedFat: $saturatedFat, transFat: $transFat)';
+    return 'NutrientModel(name: $name, weight: $weight, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat, sugars: $sugars, na: $na, col: $col, saturatedFat: $saturatedFat, transFat: $transFat)';
   }
 
   @override
@@ -263,6 +279,7 @@ class _$NutrientModelImpl implements _NutrientModel {
         (other.runtimeType == runtimeType &&
             other is _$NutrientModelImpl &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.kcal, kcal) || other.kcal == kcal) &&
             (identical(other.carbohydrate, carbohydrate) ||
                 other.carbohydrate == carbohydrate) &&
@@ -279,7 +296,7 @@ class _$NutrientModelImpl implements _NutrientModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, kcal, carbohydrate,
+  int get hashCode => Object.hash(runtimeType, name, weight, kcal, carbohydrate,
       protein, fat, sugars, na, col, saturatedFat, transFat);
 
   @JsonKey(ignore: true)
@@ -299,6 +316,7 @@ class _$NutrientModelImpl implements _NutrientModel {
 abstract class _NutrientModel implements NutrientModel {
   factory _NutrientModel(
       {required final String name,
+      required final double weight,
       required final double kcal,
       required final double carbohydrate,
       required final double protein,
@@ -314,6 +332,8 @@ abstract class _NutrientModel implements NutrientModel {
 
   @override
   String get name;
+  @override
+  double get weight;
   @override
   double get kcal;
   @override

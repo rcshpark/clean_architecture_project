@@ -20,7 +20,7 @@ jobs:
           ruby-version: '3.1.2'
       - name: Setup Kakao NATIVE_APP_KEY
         run: |
-          echo "NATIVE_APP_KEY=${{ secrets.KAKAO_NATIVE_APP_KEY }}" >> $GITHUB_WORKSPACE/android/local.properties
+          echo "KAKAO_NATIVE_APP_KEY=${{ secrets.KAKAO_NATIVE_APP_KEY }}" >> $GITHUB_WORKSPACE/android/local.properties
       - name: Decode keystore file
         run: echo "${{ secrets.ENCODED_KEYSTORE }}" | base64 --decode > $GITHUB_WORKSPACE/android/healthcare_keystore.jks
       - name: Setup signing config

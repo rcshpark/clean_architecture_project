@@ -37,7 +37,9 @@ platform :android do
     upload_to_play_store
   end
   lane :test_lane do
-    gradle(task: "test")
+    gradle(task: "test",
+    gradle_path: "./gradlew"
+    )
   end
   
 end

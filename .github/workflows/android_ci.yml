@@ -17,6 +17,6 @@ jobs:
       - name: Install dependencies
         run: bundle install
         working-directory: ./android
-      # - name: Run Fastlane
-      #   run: bundle exec fastlane test
-      #   working-directory: ./android
+      - name: Run Fastlane
+        run: bundle exec fastlane test_lane
+        working-directory: ./android

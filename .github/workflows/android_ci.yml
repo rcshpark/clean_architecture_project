@@ -1,5 +1,7 @@
 name: Run Flutter Android ci cd Test
 
+on: [push]
+
 jobs:
   release-android:
     name: Build and release Android app

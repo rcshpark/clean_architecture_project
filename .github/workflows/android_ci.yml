@@ -16,5 +16,7 @@ jobs:
         run: gem install fastlane
       - name: Install dependencies
         run: bundle install
+        working-directory: ./android
       - name: Run Fastlane
-        run: bundle exec fastlane your_lane_name
+        run: bundle exec fastlane test
+        working-directory: ./android

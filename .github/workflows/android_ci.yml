@@ -1,22 +1,26 @@
-name: Android CI
-
-on: [push]
+name: Run Flutter E2E (android) test
 
 jobs:
-  build:
+  release-android:
+    name: Build and release Android app
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1.81.0
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
         with:
-          ruby-version: 3.0
+          distribution: 'zulu'
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v2.8.0
+        with:
+          flutter-version: '3.3.8'
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.2'
       - name: Install Fastlane
-        run: gem install fastlane
-      - name: Install dependencies
-        run: bundle install
-        working-directory: ./android
-      - name: Run Fastlane
-        run: bundle exec fastlane test_lane
-        working-directory: ./android
+        run: cd android && bundle install && cd ..
+      - name: Install packages
+        run: flutter pub get
+      - name: Prebuild
+        run: flutter build appbundle
+      - name: Execute Fastlane command
+        run: cd android && fastlane release

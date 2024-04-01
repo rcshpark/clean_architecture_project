@@ -1,5 +1,5 @@
 import 'package:health_care/src/core/enum.dart';
-import 'package:health_care/src/core/usecase/usecase.dart';
+import 'package:health_care/src/core/usecase/auth_usecase.dart';
 import 'package:health_care/src/domain/model/data_state_model.dart';
 import 'package:health_care/src/domain/model/user_model.dart';
 import 'package:health_care/src/domain/repository/auth_repository.dart';

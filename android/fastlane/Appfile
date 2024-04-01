@@ -1,2 +1,2 @@
 json_key_file("/Users/rcshpark/Desktop/shpark/project/health_care/android/app/healthcare-2b9d1-firebase-adminsdk-v485a-b927c404b2.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-package_name("com.example.health_care") # e.g. com.krausefx.app
+package_name("com.appsforyou.health_care") # e.g. com.krausefx.app

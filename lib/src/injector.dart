@@ -22,5 +22,6 @@ void setupInjector() {
       () => NutrientRepositoryImpl(getIt()));
 
   getIt.registerLazySingleton<AuthUseCase>(() => AuthUseCase(getIt()));
-  getIt.registerLazySingleton<NutrientUseCase>(() => NutrientUseCase(getIt()));
+  getIt.registerLazySingleton<RemoteNutrientUseCase>(
+      () => RemoteNutrientUseCase(getIt()));
 }

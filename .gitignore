@@ -46,7 +46,7 @@ app.*.map.json
 ios/firebase_app_id_file.json
 macos/firebase_app_id_file.json
 android/app/google-services.json
-android/app/health-care-419005-62fd4202fbdb.json
+android/app/healthcare-2b9d1-firebase-adminsdk-v485a-b927c404b2.json
 lib/firebase_options.dart
 ios/Runner/GoogleService-Info.plist
 macos/Runner/GoogleService-Info.plist

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:health_care/src/core/enum.dart';
-import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_detail_view.dart';
+import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_search_view.dart';
 import 'package:health_care/src/presentation/view_model/auth/auth_view_model.dart';
 
 class AuthScreen extends ConsumerWidget {
@@ -25,10 +25,8 @@ Widget authBody(
     });
   } else if (authState is AuthSuccess) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const NutrientDetailScreen()));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => NutrientSearchScreen()));
     });
   } else if (authState is AuthLoading) {
     return const Center(child: CircularProgressIndicator());

@@ -56,7 +56,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
-        manifestPlaceholders = [NATIVE_APP_KEY: "${NATIVE_APP_KEY}"]
+        manifestPlaceholders += [KAKAO_NATIVE_APP_KEY: localProperties['KAKAO_NATIVE_APP_KEY']]
     }
     signingConfigs {
     release {

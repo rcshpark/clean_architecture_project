@@ -22,11 +22,11 @@ jobs:
         run: |
           echo "NATIVE_APP_KEY=${{ secrets.KAKAO_NATIVE_APP_KEY }}" >> $GITHUB_WORKSPACE/android/local.properties
       - name: Setup signing config
-      run: |
-        echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
-        echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
-        echo "storeFile=${{ secrets.STORE_FILE }}" >> $GITHUB_WORKSPACE/android/key.properties
-        echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
+        run: |
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "storeFile=${{ secrets.STORE_FILE }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Install packages

@@ -7,14 +7,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby 2.7.2
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.7.2
-    - name: Install dependencies
-      run: |
-        gem install bundler
-        bundle install
-    - name: Run Fastlane
-      run: bundle exec fastlane [test_lane]
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.81.0
+        with:
+          ruby-version: 2.7 # 또는 '2.7.2' 혹은 원하는 구체적인 버전
+      - name: Install Fastlane
+        run: gem install fastlane
+      - name: Install dependencies
+        run: bundle install
+      - name: Run Fastlane
+        run: bundle exec fastlane your_lane_name

@@ -14,7 +14,7 @@ jobs:
         ruby-version: 2.7.2
     - name: Install dependencies
       run: |
-        gem install bundler
+        brew install bundler
         bundle install
     - name: Run Fastlane
       run: bundle exec fastlane [test_lane]

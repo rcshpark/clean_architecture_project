@@ -32,7 +32,7 @@ jobs:
       - name: google-services setting
         run: echo "${{ secrets.GOOGLE_SERVICES }}" > $GITHUB_WORKSPACE/android/app/google-services.json
       - name: firebase_options setting
-        run: echo "${{ secrets.FIREBASE_OPTIONS }}" > $GITHUB_WORKSPACE/firebase_options.dart
+        run: echo "${{ secrets.FIREBASE_OPTIONS }}" > $GITHUB_WORKSPACE/lib/firebase_options.dart
       - name: firebase-adminsdk setting
         run: echo "${{ secrets.FIREBASE_ADMINSDK }}" > $GITHUB_WORKSPACE/android/app/healthcare-2b9d1-firebase-adminsdk-v485a-b927c404b2.json
       - name: Install Fastlane

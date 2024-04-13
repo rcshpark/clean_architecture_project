@@ -18,6 +18,12 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1.2'
+      - name: Set up .env file
+        run: |
+          echo "ANDROID_FIREBASE_API_KEY=${{ secrets.ANDROID_FIREBASE_API_KEY }}" >> .env
+          echo "IOS_FIREBASE_API_KEY=${{ secrets.IOS_FIREBASE_API_KEY }}" >> .env
+          echo "MACOS_FIREBASE_API_KEY=${{ secrets.MACOS_FIREBASE_API_KEY }}" >> .env
+          echo "WEB_FIREBASE_API_KEY=${{ secrets.WEB_FIREBASE_API_KEY }}" >> .env
       - name: Setup Kakao NATIVE_APP_KEY
         run: |
           echo "KAKAO_NATIVE_APP_KEY=${{ secrets.KAKAO_NATIVE_APP_KEY }}" >> $GITHUB_WORKSPACE/android/local.properties
@@ -29,12 +35,6 @@ jobs:
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storeFile=$GITHUB_WORKSPACE/android/healthcare_keystore.jks" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
-      - name: google-services setting
-        run: echo "${{ secrets.GOOGLE_SERVICES }}" > $GITHUB_WORKSPACE/android/app/google-services.json
-      - name: firebase_options setting
-        run: echo "${{ secrets.FIREBASE_OPTIONS }}" > $GITHUB_WORKSPACE/lib/firebase_options.dart
-      - name: firebase-adminsdk setting
-        run: echo "${{ secrets.FIREBASE_ADMINSDK }}" > $GITHUB_WORKSPACE/android/app/healthcare-2b9d1-firebase-adminsdk-v485a-b927c404b2.json
       - name: Install Fastlane
         run: cd android && bundle install && cd ..
       - name: Install packages

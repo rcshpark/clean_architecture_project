@@ -40,6 +40,6 @@ jobs:
       - name: Install packages
         run: flutter pub get
       - name: Prebuild
-        run: flutter build appbundle --stacktrace
+        run: flutter build appbundle 
       # - name: Execute Fastlane command
       #   run: cd android && fastlane release

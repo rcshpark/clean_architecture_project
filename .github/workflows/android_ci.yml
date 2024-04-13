@@ -31,7 +31,7 @@ jobs:
         run: echo "${{ secrets.ENCODED_KEYSTORE }}" | base64 --decode > $GITHUB_WORKSPACE/android/healthcare_keystore.jks
       - name: Setup signing config
         run: |
-          echo "keyAlias=${{ secrets.KEYALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
           echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storeFile=$GITHUB_WORKSPACE/android/healthcare_keystore.jks" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storePassword=${{ secrets.STOREPASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties

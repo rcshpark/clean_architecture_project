@@ -23,7 +23,7 @@ jobs:
           echo "ANDROID_FIREBASE_API_KEY=${{ secrets.ANDROID_FIREBASE_API_KEY }}" >> .env
           echo "IOS_FIREBASE_API_KEY=${{ secrets.IOS_FIREBASE_API_KEY }}" >> .env
           echo "MACOS_FIREBASE_API_KEY=${{ secrets.MACOS_FIREBASE_API_KEY }}" >> .env
-          echo "WEB_FIREBASE_API_KEY=${{ secrets.WEB_FIREBASE_API_KEY }}" >> .env
+          echo "WEB_FIREBASE_API_KEY=${{ secrets.IOS_FIREBASE_API_KEY }}" >> .env
       - name: Setup Kakao NATIVE_APP_KEY
         run: |
           echo "KAKAO_NATIVE_APP_KEY=${{ secrets.KAKAO_NATIVE_APP_KEY }}" >> $GITHUB_WORKSPACE/android/local.properties

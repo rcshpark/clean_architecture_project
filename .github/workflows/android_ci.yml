@@ -1,6 +1,6 @@
 name: Run Flutter Android ci cd Test
 
-on: [push]
+on: [pull_request]
 
 jobs:
   release-android:
@@ -32,7 +32,7 @@ jobs:
       - name: Setup signing config
         run: |
           echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> $GITHUB_WORKSPACE/android/key.properties
-          echo "keyPassword=${{ secrets.KEYPASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storeFile=$GITHUB_WORKSPACE/android/healthcare_keystore.jks" >> $GITHUB_WORKSPACE/android/key.properties
           echo "storePassword=${{ secrets.STOREPASSWORD }}" >> $GITHUB_WORKSPACE/android/key.properties
       - name: Install Fastlane

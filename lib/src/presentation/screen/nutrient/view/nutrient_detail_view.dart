@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:health_care/src/domain/model/nutrient_model.dart';
-
-List<NutrientModel> addList = [];
+import 'package:health_care/src/presentation/view_model/nutrient/nutrient_view_model.dart';
 
 class NutrientDetailScreen extends ConsumerWidget {
   final NutrientModel nutrientModel;
@@ -12,7 +11,13 @@ class NutrientDetailScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        appBar: AppBar(title: const Text("상세정보")),
+        appBar: AppBar(
+          title: const Text("상세정보"),
+          leading: IconButton(
+            onPressed: () => Navigator.pop(context),
+            icon: const Icon(Icons.arrow_back),
+          ),
+        ),
         body: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -31,7 +36,7 @@ class NutrientDetailScreen extends ConsumerWidget {
               ),
               Text("칼로리: ${nutrientModel.kcal}kcal",
                   style: const TextStyle(fontSize: 14)),
-              Text("탄수화물: ${nutrientModel.carbohydrate}",
+              Text("탄수화물: ${nutrientModel.carbohydrate}g",
                   style: const TextStyle(fontSize: 14)),
               Text("단백질: ${nutrientModel.protein}g",
                   style: const TextStyle(fontSize: 14)),
@@ -49,12 +54,15 @@ class NutrientDetailScreen extends ConsumerWidget {
                   style: const TextStyle(fontSize: 14)),
               ElevatedButton(
                   onPressed: () {
-                    if (addList.contains(nutrientModel)) {
+                    if (ref
+                        .read(addNutrientViewModel)
+                        .contains(nutrientModel)) {
                       Fluttertoast.showToast(msg: "이미 추가된 항목입니다!");
                       return;
                     }
-                    addList.add(nutrientModel);
-                    print(addList);
+                    ref
+                        .read(addNutrientViewModel.notifier)
+                        .addNutrientList(nutrientModel);
                   },
                   child: const Text("추가"))
             ],

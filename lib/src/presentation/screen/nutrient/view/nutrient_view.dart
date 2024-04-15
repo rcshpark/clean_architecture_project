@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_search_view.dart';
 
 class NutrientScreen extends ConsumerWidget {
   const NutrientScreen({super.key});
@@ -10,7 +11,12 @@ class NutrientScreen extends ConsumerWidget {
         body: Column(
           children: [
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NutrientSearchScreen()));
+              },
               child: const ListTile(
                 title: Text('아침 식단'),
                 trailing: Icon(Icons.add),

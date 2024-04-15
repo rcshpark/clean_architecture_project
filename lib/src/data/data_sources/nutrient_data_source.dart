@@ -2,11 +2,18 @@ import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:health_care/src/data/dto/nutrient_dto.dart';
 import 'package:health_care/src/domain/model/nutrient_model.dart';
 import 'package:http/http.dart' as http;
 
+final nutrientDataSourceProvider = Provider<NutrientDataSource>((ref) {
+  return NutrientDataSource(ref);
+});
+
 class NutrientDataSource {
+  final Ref ref;
+  NutrientDataSource(this.ref);
   Future<List<NutrientDto>> searchNutrient(String qurey) async {
     String searchUrl =
         "${dotenv.env["SEARCH_API"]}?serviceKey=${dotenv.env["SERVICE_KEY"]}&numOfRows=30&pageNo=1&type=json&desc_kor=$qurey";

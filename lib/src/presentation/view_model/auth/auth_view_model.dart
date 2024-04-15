@@ -9,9 +9,11 @@ import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_searc
 
 part 'auth_view_model_state.dart';
 
-final AuthUseCase _authUseCase = GetIt.I<AuthUseCase>();
-final authViewModelProvider = StateNotifierProvider<AuthViewModel, AuthState>(
-    (ref) => AuthViewModel(_authUseCase));
+final authViewModelProvider =
+    StateNotifierProvider<AuthViewModel, AuthState>((ref) {
+  final authUsecase = ref.watch(authUseCaseProvider);
+  return AuthViewModel(authUsecase);
+});
 
 class AuthViewModel extends StateNotifier<AuthState> {
   final AuthUseCase _authUseCase;

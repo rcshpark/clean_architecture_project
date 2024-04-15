@@ -1,9 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:health_care/src/data/dto/user_dto.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
+final authDataSourceProvider = Provider<AuthDataSource>((ref) {
+  return AuthDataSource(ref);
+});
+
 class AuthDataSource {
+  final Ref ref;
+  AuthDataSource(this.ref);
+
   Future<UserDto> loginWithKakao() async {
     if (await isKakaoTalkInstalled()) {
       try {

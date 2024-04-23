@@ -88,7 +88,7 @@ Widget searchBody(
                   builder: ((context) =>
                       NutrientDetailScreen(nutrientModel: nutrient)))),
           child: ListTile(
-            title: Text("${nutrient.name} ${nutrient.company}"),
+            title: Text("${nutrient.name} - ${nutrient.company}"),
             subtitle: Text("Calories: ${nutrient.kcal}"),
           ),
         );

@@ -21,7 +21,7 @@ class NutrientRemoteViewModel extends StateNotifier<RemoteNutrientState> {
     response.when(success: (data) {
       state = RemoteNutrientSuccess(data);
     }, error: ((error, message) {
-      RemoteNutrientError(message);
+      state = RemoteNutrientError(message);
       print("error: $error");
       print("message: $message");
     }));
@@ -30,13 +30,13 @@ class NutrientRemoteViewModel extends StateNotifier<RemoteNutrientState> {
   test() {}
 }
 
-final addNutrientViewModel =
-    StateNotifierProvider<AddNutrientViewModel, List<NutrientModel>>((ref) {
-  return AddNutrientViewModel();
+final nutrientController =
+    StateNotifierProvider<NutrientController, List<NutrientModel>>((ref) {
+  return NutrientController();
 });
 
-class AddNutrientViewModel extends StateNotifier<List<NutrientModel>> {
-  AddNutrientViewModel() : super([]);
+class NutrientController extends StateNotifier<List<NutrientModel>> {
+  NutrientController() : super([]);
 
   addNutrientList(NutrientModel nutrientModel) {
     state = [...state, nutrientModel];

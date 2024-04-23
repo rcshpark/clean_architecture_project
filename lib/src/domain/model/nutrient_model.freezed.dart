@@ -31,6 +31,7 @@ mixin _$NutrientModel {
   double get col => throw _privateConstructorUsedError;
   double get saturatedFat => throw _privateConstructorUsedError;
   double get transFat => throw _privateConstructorUsedError;
+  String get company => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -55,7 +56,8 @@ abstract class $NutrientModelCopyWith<$Res> {
       double na,
       double col,
       double saturatedFat,
-      double transFat});
+      double transFat,
+      String company});
 }
 
 /// @nodoc
@@ -82,6 +84,7 @@ class _$NutrientModelCopyWithImpl<$Res, $Val extends NutrientModel>
     Object? col = null,
     Object? saturatedFat = null,
     Object? transFat = null,
+    Object? company = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -128,6 +131,10 @@ class _$NutrientModelCopyWithImpl<$Res, $Val extends NutrientModel>
           ? _value.transFat
           : transFat // ignore: cast_nullable_to_non_nullable
               as double,
+      company: null == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -151,7 +158,8 @@ abstract class _$$NutrientModelImplCopyWith<$Res>
       double na,
       double col,
       double saturatedFat,
-      double transFat});
+      double transFat,
+      String company});
 }
 
 /// @nodoc
@@ -176,6 +184,7 @@ class __$$NutrientModelImplCopyWithImpl<$Res>
     Object? col = null,
     Object? saturatedFat = null,
     Object? transFat = null,
+    Object? company = null,
   }) {
     return _then(_$NutrientModelImpl(
       name: null == name
@@ -222,6 +231,10 @@ class __$$NutrientModelImplCopyWithImpl<$Res>
           ? _value.transFat
           : transFat // ignore: cast_nullable_to_non_nullable
               as double,
+      company: null == company
+          ? _value.company
+          : company // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -240,7 +253,8 @@ class _$NutrientModelImpl implements _NutrientModel {
       required this.na,
       required this.col,
       required this.saturatedFat,
-      required this.transFat});
+      required this.transFat,
+      required this.company});
 
   factory _$NutrientModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$NutrientModelImplFromJson(json);
@@ -267,10 +281,12 @@ class _$NutrientModelImpl implements _NutrientModel {
   final double saturatedFat;
   @override
   final double transFat;
+  @override
+  final String company;
 
   @override
   String toString() {
-    return 'NutrientModel(name: $name, weight: $weight, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat, sugars: $sugars, na: $na, col: $col, saturatedFat: $saturatedFat, transFat: $transFat)';
+    return 'NutrientModel(name: $name, weight: $weight, kcal: $kcal, carbohydrate: $carbohydrate, protein: $protein, fat: $fat, sugars: $sugars, na: $na, col: $col, saturatedFat: $saturatedFat, transFat: $transFat, company: $company)';
   }
 
   @override
@@ -291,13 +307,14 @@ class _$NutrientModelImpl implements _NutrientModel {
             (identical(other.saturatedFat, saturatedFat) ||
                 other.saturatedFat == saturatedFat) &&
             (identical(other.transFat, transFat) ||
-                other.transFat == transFat));
+                other.transFat == transFat) &&
+            (identical(other.company, company) || other.company == company));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, weight, kcal, carbohydrate,
-      protein, fat, sugars, na, col, saturatedFat, transFat);
+      protein, fat, sugars, na, col, saturatedFat, transFat, company);
 
   @JsonKey(ignore: true)
   @override
@@ -325,7 +342,8 @@ abstract class _NutrientModel implements NutrientModel {
       required final double na,
       required final double col,
       required final double saturatedFat,
-      required final double transFat}) = _$NutrientModelImpl;
+      required final double transFat,
+      required final String company}) = _$NutrientModelImpl;
 
   factory _NutrientModel.fromJson(Map<String, dynamic> json) =
       _$NutrientModelImpl.fromJson;
@@ -352,6 +370,8 @@ abstract class _NutrientModel implements NutrientModel {
   double get saturatedFat;
   @override
   double get transFat;
+  @override
+  String get company;
   @override
   @JsonKey(ignore: true)
   _$$NutrientModelImplCopyWith<_$NutrientModelImpl> get copyWith =>

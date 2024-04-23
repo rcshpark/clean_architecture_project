@@ -16,6 +16,7 @@ class NutrientModel with _$NutrientModel {
     required double col,
     required double saturatedFat,
     required double transFat,
+    required String company,
   }) = _NutrientModel;
 
   factory NutrientModel.fromJson(Map<String, dynamic> json) =>

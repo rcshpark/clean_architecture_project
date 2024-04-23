@@ -25,6 +25,8 @@ class NutrientDto {
   String saturatedFat;
   @JsonKey(name: 'NUTR_CONT9')
   String transFat;
+  @JsonKey(name: 'ANIMAL_PLANT')
+  String company;
   NutrientDto(
       this.name,
       this.weight,
@@ -36,7 +38,8 @@ class NutrientDto {
       this.na,
       this.col,
       this.saturatedFat,
-      this.transFat);
+      this.transFat,
+      this.company);
 
   factory NutrientDto.fromJson(Map<String, dynamic> json) =>
       _$NutrientDtoFromJson(json);

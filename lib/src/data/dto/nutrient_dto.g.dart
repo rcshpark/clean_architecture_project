@@ -18,6 +18,7 @@ NutrientDto _$NutrientDtoFromJson(Map<String, dynamic> json) => NutrientDto(
       json['NUTR_CONT7'] as String,
       json['NUTR_CONT8'] as String,
       json['NUTR_CONT9'] as String,
+      json['ANIMAL_PLANT'] as String,
     );
 
 Map<String, dynamic> _$NutrientDtoToJson(NutrientDto instance) =>
@@ -33,4 +34,5 @@ Map<String, dynamic> _$NutrientDtoToJson(NutrientDto instance) =>
       'NUTR_CONT7': instance.col,
       'NUTR_CONT8': instance.saturatedFat,
       'NUTR_CONT9': instance.transFat,
+      'ANIMAL_PLANT': instance.company,
     };

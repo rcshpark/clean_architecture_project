@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:health_care/src/presentation/screen/nutrient/view/nutrient_detail_view.dart';
+import 'package:health_care/src/presentation/screen/nutrient/widgets/search_result_widget.dart';
 import 'package:health_care/src/presentation/view_model/nutrient/nutrient_view_model.dart';
 
 class NutrientSearchScreen extends ConsumerWidget {
@@ -12,7 +12,7 @@ class NutrientSearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final nutrientState = ref.watch(nutreintViewModel);
     final nutrientViewModel = ref.watch(nutreintViewModel.notifier);
-    final addList = ref.watch(addNutrientViewModel);
+    final addList = ref.watch(nutrientController);
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -44,25 +44,25 @@ class NutrientSearchScreen extends ConsumerWidget {
               },
             ),
             Expanded(child: searchBody(nutrientState, context, addList)),
-            ref.watch(addNutrientViewModel).isNotEmpty
-                ? Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        Text(
-                            "총 칼로리 : ${ref.read(addNutrientViewModel.notifier).calculateTotalKcal()} kcal"),
-                        const Spacer(),
-                        ElevatedButton(
-                            onPressed: () {}, child: const Text('자세히 보기')),
-                        const SizedBox(
-                          width: 15,
-                        ),
-                        ElevatedButton(
-                            onPressed: () {}, child: const Text('저장'))
-                      ],
-                    ),
-                  )
-                : const SizedBox()
+            if (ref.watch(nutrientController).isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                        "총 칼로리: ${ref.read(nutrientController.notifier).calculateTotalKcal()} kcal"),
+                    ElevatedButton(
+                        onPressed: () {
+                          showNutrientListBottomSheet(context);
+                        },
+                        child: const Text('자세히')),
+                    ElevatedButton(onPressed: () {}, child: const Text('저장'))
+                  ],
+                ),
+              )
+            else
+              const SizedBox()
           ],
         ),
       ),
@@ -88,18 +88,17 @@ Widget searchBody(
                   builder: ((context) =>
                       NutrientDetailScreen(nutrientModel: nutrient)))),
           child: ListTile(
-            title: Text(nutrient.name),
+            title: Text("${nutrient.name} ${nutrient.company}"),
             subtitle: Text("Calories: ${nutrient.kcal}"),
           ),
         );
       },
     );
   } else if (nutrientState is RemoteNutrientError) {
-    return Text(nutrientState.message);
+    return Center(
+        child: Text(
+            textAlign: TextAlign.center,
+            "검색중에 오류가 발생했습니다. \n${nutrientState.message}"));
   }
   return const Text("검색 결과가 없습니다.");
-}
-
-Widget searchResultUI() {
-  return Container();
 }

@@ -19,6 +19,7 @@ _$NutrientModelImpl _$$NutrientModelImplFromJson(Map<String, dynamic> json) =>
       col: (json['col'] as num).toDouble(),
       saturatedFat: (json['saturatedFat'] as num).toDouble(),
       transFat: (json['transFat'] as num).toDouble(),
+      company: json['company'] as String,
     );
 
 Map<String, dynamic> _$$NutrientModelImplToJson(_$NutrientModelImpl instance) =>
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$NutrientModelImplToJson(_$NutrientModelImpl instance) =>
       'col': instance.col,
       'saturatedFat': instance.saturatedFat,
       'transFat': instance.transFat,
+      'company': instance.company,
     };

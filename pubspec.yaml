@@ -46,6 +46,7 @@ dependencies:
   http: ^1.2.1
   fluttertoast: ^8.2.4
   flutter_svg:
+  fl_chart: ^0.67.0
 
 dev_dependencies:
   flutter_test:

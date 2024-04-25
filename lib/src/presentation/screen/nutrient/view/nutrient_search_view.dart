@@ -7,12 +7,22 @@ import 'package:health_care/src/presentation/view_model/nutrient/nutrient_view_m
 class NutrientSearchScreen extends ConsumerWidget {
   NutrientSearchScreen({super.key});
   final searchTextController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels ==
+          _scrollController.position.maxScrollExtent) {
+        final nutrientViewModel = ref.read(nutreintViewModel.notifier);
+        nutrientViewModel.searchNutrient(searchTextController.text,
+            loadMore: true);
+      }
+    });
     final nutrientState = ref.watch(nutreintViewModel);
     final nutrientViewModel = ref.watch(nutreintViewModel.notifier);
     final addList = ref.watch(nutrientController);
+    final hasMoreData = ref.watch(nutreintViewModel.notifier).hasMoreData;
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -43,7 +53,9 @@ class NutrientSearchScreen extends ConsumerWidget {
                 nutrientViewModel.searchNutrient(query);
               },
             ),
-            Expanded(child: searchBody(nutrientState, context, addList)),
+            Expanded(
+                child: searchBody(nutrientState, context, addList,
+                    _scrollController, hasMoreData)),
             if (ref.watch(nutrientController).isNotEmpty)
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -70,16 +82,26 @@ class NutrientSearchScreen extends ConsumerWidget {
   }
 }
 
-Widget searchBody(
-    RemoteNutrientState nutrientState, BuildContext context, final addList) {
+Widget searchBody(RemoteNutrientState nutrientState, BuildContext context,
+    final addList, ScrollController scrollController, final hasMoreData) {
   if (nutrientState is RemoteNutrientInitial) {
     return const Center(child: Text("검색어를 입력하세요"));
   } else if (nutrientState is RemoteNutrientLoading) {
     return const Center(child: CircularProgressIndicator());
   } else if (nutrientState is RemoteNutrientSuccess) {
     return ListView.builder(
-      itemCount: nutrientState.nutrients.length,
+      controller: scrollController,
+      itemCount: nutrientState.nutrients.length + 1,
       itemBuilder: (context, index) {
+        if (index >= nutrientState.nutrients.length) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+            child: Center(
+                child: hasMoreData
+                    ? const CircularProgressIndicator()
+                    : const Text("더 이상 데이터가 없습니다.")),
+          ); // 페이지네이션 로딩 바
+        }
         final nutrient = nutrientState.nutrients[index];
         return InkWell(
           onTap: () => Navigator.push(
@@ -94,6 +116,11 @@ Widget searchBody(
         );
       },
     );
+  } else if (nutrientState is RemoteNutrientError) {
+    return Center(
+        child: Text(
+            textAlign: TextAlign.center,
+            "검색중에 오류가 발생했습니다. \n${nutrientState.message}"));
   } else if (nutrientState is RemoteNutrientError) {
     return Center(
         child: Text(

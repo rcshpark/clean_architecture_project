@@ -14,9 +14,9 @@ final nutrientDataSourceProvider = Provider<NutrientDataSource>((ref) {
 class NutrientDataSource {
   final Ref ref;
   NutrientDataSource(this.ref);
-  Future<List<NutrientDto>> searchNutrient(String qurey) async {
+  Future<List<NutrientDto>> searchNutrient(String qurey, int page) async {
     String searchUrl =
-        "${dotenv.env["SEARCH_API"]}?serviceKey=${dotenv.env["SERVICE_KEY"]}&numOfRows=30&pageNo=1&type=json&desc_kor=$qurey";
+        "${dotenv.env["SEARCH_API"]}?serviceKey=${dotenv.env["SERVICE_KEY"]}&numOfRows=${page}0&pageNo=1&type=json&desc_kor=$qurey";
     final response = await http.get(Uri.parse(searchUrl));
     var data = json.decode(response.body);
     final items = data['body']['items'] as List;

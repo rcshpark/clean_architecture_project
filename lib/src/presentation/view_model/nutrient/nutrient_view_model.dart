@@ -13,21 +13,45 @@ final nutreintViewModel =
 
 class NutrientRemoteViewModel extends StateNotifier<RemoteNutrientState> {
   final RemoteNutrientUseCase _nutrientUseCase;
+  int currentPage = 1;
+  bool isFetching = false;
+  bool hasMoreData = true;
+  List<NutrientModel> loadNutrients = [];
   NutrientRemoteViewModel(this._nutrientUseCase)
       : super(const RemoteNutrientInitial());
-  Future<void> searchNutrient(String query) async {
-    state = const RemoteNutrientLoading();
-    final response = await _nutrientUseCase.search(query);
+  Future<void> searchNutrient(String query, {bool loadMore = false}) async {
+    if (isFetching || !hasMoreData) return;
+    isFetching = true;
+
+    if (!loadMore) {
+      currentPage = 1;
+      loadNutrients = [];
+      hasMoreData = true;
+    }
+
+    state = loadMore ? state : const RemoteNutrientLoading();
+    final response = await _nutrientUseCase.search(query, currentPage);
     response.when(success: (data) {
-      state = RemoteNutrientSuccess(data);
+      if (data.isNotEmpty) {
+        loadNutrients.addAll(data);
+        currentPage++;
+      }
+      state = RemoteNutrientSuccess(loadNutrients);
+      isFetching = false;
     }, error: ((error, message) {
-      state = RemoteNutrientError(message);
+      if (currentPage != 1) {
+        state = RemoteNutrientSuccess(loadNutrients);
+        hasMoreData = false;
+      } else {
+        state = RemoteNutrientError(message);
+      }
+
+      isFetching = false;
+
       print("error: $error");
       print("message: $message");
     }));
   }
-
-  test() {}
 }
 
 final nutrientController =

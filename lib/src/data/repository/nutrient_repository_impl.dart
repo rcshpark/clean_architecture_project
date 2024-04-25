@@ -14,10 +14,12 @@ class NutrientRepositoryImpl implements NutrientRepository {
   NutrientRepositoryImpl(this.ref);
 
   @override
-  Future<DataState<List<NutrientModel>>> searchNutrient(String query) async {
+  Future<DataState<List<NutrientModel>>> searchNutrient(
+      String query, int page) async {
     try {
-      final res =
-          await ref.read(nutrientDataSourceProvider).searchNutrient(query);
+      final res = await ref
+          .read(nutrientDataSourceProvider)
+          .searchNutrient(query, page);
       return Translator().translateNutrient(res);
     } catch (e) {
       return DataState.error(Exception(), e.toString());

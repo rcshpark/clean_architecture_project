@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:health_care/src/core/usecase/%08nutrient_usecase.dart';
+import 'package:health_care/src/core/usecase/nutrient_usecase.dart';
 import 'package:health_care/src/data/repository/nutrient_repository_impl.dart';
 import 'package:health_care/src/domain/model/data_state_model.dart';
 import 'package:health_care/src/domain/model/nutrient_model.dart';
@@ -17,8 +17,8 @@ class RemoteNutrientUseCase
   RemoteNutrientUseCase(this._remoteRepository);
 
   @override
-  Future<DataState<List<NutrientModel>>> search(dynamic params) {
-    return _remoteRepository.searchNutrient(params);
+  Future<DataState<List<NutrientModel>>> search(dynamic params, dynamic page) {
+    return _remoteRepository.searchNutrient(params, page);
   }
 
   @override

@@ -20,7 +20,7 @@ class NutrientRemoteViewModel extends StateNotifier<RemoteNutrientState> {
   NutrientRemoteViewModel(this._nutrientUseCase)
       : super(const RemoteNutrientInitial());
   Future<void> searchNutrient(String query, {bool loadMore = false}) async {
-    if (isFetching || !hasMoreData) return;
+    if (isFetching) return;
     isFetching = true;
 
     if (!loadMore) {
@@ -35,6 +35,9 @@ class NutrientRemoteViewModel extends StateNotifier<RemoteNutrientState> {
       if (data.isNotEmpty) {
         loadNutrients.addAll(data);
         currentPage++;
+      }
+      if (data.length < 9) {
+        hasMoreData = false;
       }
       state = RemoteNutrientSuccess(loadNutrients);
       isFetching = false;

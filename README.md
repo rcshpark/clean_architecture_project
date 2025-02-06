@@ -1,4 +1,4 @@
-# health_care clean architecture
+# clean architecture study project
 
 A new Flutter project.
 

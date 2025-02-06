@@ -1,6 +1,7 @@
 # clean architecture study project
 
-A new Flutter project.
+- riverpod
+- ci/cd (android)
 
 ## Getting Started
 
